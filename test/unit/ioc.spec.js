@@ -121,7 +121,7 @@ test.group('Ioc', function () {
     const fooFn = function () {}
     ioc.bind('App/Foo', fooFn)
     ioc.alias('App/Foo', 'Foo')
-    assert.equal(ioc.getAliases()['Foo'], 'App/Foo')
+    assert.equal(ioc.getAliases().Foo, 'App/Foo')
   })
 
   test('should be able to resolve bindings using alias', (assert) => {
@@ -138,7 +138,7 @@ test.group('Ioc', function () {
   test('should be able to autoload a directory under a given namespace', (assert) => {
     const ioc = new Ioc()
     ioc.autoload(path.join(__dirname, './app'), 'App')
-    assert.equal(ioc.getAutoloads()['App'], path.join(__dirname, './app'))
+    assert.equal(ioc.getAutoloads().App, path.join(__dirname, './app'))
   })
 
   test('should be able to call a closure when loading has been successful using with', (assert) => {
@@ -193,8 +193,8 @@ test.group('Ioc', function () {
     const ioc = new Ioc()
     ioc.autoload(path.join(__dirname, './app/Blog'), 'Blog')
     ioc.autoload(path.join(__dirname, './app/Admin'), 'Admin')
-    assert.equal(ioc.getAutoloads()['Blog'], path.join(__dirname, './app/Blog'))
-    assert.equal(ioc.getAutoloads()['Admin'], path.join(__dirname, './app/Admin'))
+    assert.equal(ioc.getAutoloads().Blog, path.join(__dirname, './app/Blog'))
+    assert.equal(ioc.getAutoloads().Admin, path.join(__dirname, './app/Admin'))
   })
 
   test('should be able to resolve files from multiple autoloaded directories', (assert) => {
@@ -259,7 +259,7 @@ test.group('Ioc', function () {
     })
 
     ioc.executeExtendCalls()
-    assert.deepEqual(extendedValues, {redis: 'I am redis'})
+    assert.deepEqual(extendedValues, { redis: 'I am redis' })
   })
 
   test('should pass all extra options to the extend method of the manager', (assert) => {
@@ -278,7 +278,7 @@ test.group('Ioc', function () {
     }, 'boom')
 
     ioc.executeExtendCalls()
-    assert.deepEqual(extendedValues, {options: 'boom'})
+    assert.deepEqual(extendedValues, { options: 'boom' })
   })
 
   test('should throw exception when a closure is not passed to the fake method', (assert) => {
@@ -327,9 +327,8 @@ test.group('Ioc', function () {
 
     const time = ioc.use('App/Foo')
     setTimeout(() => {
-      done(() => {
-        assert.equal(time, ioc.use('App/Foo'))
-      })
+      assert.equal(time, ioc.use('App/Foo'))
+      done()
     }, 1000)
   })
 

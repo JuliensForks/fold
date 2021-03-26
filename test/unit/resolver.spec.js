@@ -111,7 +111,7 @@ test.group('Resolver', (group) => {
   test('resolve binding when input is a function', (assert) => {
     const resolver = new Resolver(this.ioc, { httpControllers: 'Controllers' }, 'App')
     const fn = function () {}
-    assert.deepEqual(resolver.resolveFunc(fn), {instance: null, isClosure: true, method: fn})
+    assert.deepEqual(resolver.resolveFunc(fn), { instance: null, isClosure: true, method: fn })
   })
 
   test('resolve binding via IoC container', (assert) => {
@@ -175,7 +175,7 @@ test.group('Resolver', (group) => {
     const resolvedValue = resolver.resolveFunc('Adonis/Src\\.Foo.bar')
     assert.isFunction(resolvedValue.method)
     delete resolvedValue.method
-    assert.deepEqual(resolvedValue, {instance: fooInstance, isClosure: false})
+    assert.deepEqual(resolvedValue, { instance: fooInstance, isClosure: false })
   })
 
   test('throw exception when binding is not a string, neither a callback', (assert) => {
