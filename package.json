@@ -9,11 +9,9 @@
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
-    "posttest": "npm run coverage",
     "test:local": "FORCE_COLOR=true node bin/index.js --local",
-    "test": "nyc node japaFile.js",
+    "test": "node japaFile.js",
     "test:win": "node japaFile.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "commit": "git-cz",
     "lint": "standard"
   },
@@ -34,12 +32,10 @@
   "devDependencies": {
     "@adonisjs/mrm-preset": "^3.0.0",
     "commitizen": "^4.2.3",
-    "coveralls": "^3.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "japa": "^3.1.1",
     "japa-cli": "^1.0.1",
     "mrm": "^2.6.1",
-    "nyc": "^15.1.0",
     "pkg-ok": "^2.3.1",
     "semver": "^7.3.5",
     "standard": "^16.0.3"
